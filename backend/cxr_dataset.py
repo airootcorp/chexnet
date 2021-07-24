@@ -14,17 +14,19 @@ class CXRDataset(Dataset):
             transform=None,
             sample=0,
             finding="any",
-            starter_images=False):
+            starter_images=False,
+            file_name=""):
 
         self.transform = transform
         self.path_to_images = path_to_images
         self.df = pd.read_csv("nih_labels.csv")
         self.df = self.df[self.df['fold'] == fold]
-
+        self.file_name = file_name
         if(starter_images):
             starter_images = pd.read_csv("starter_images.csv")
             self.df=pd.merge(left=self.df,right=starter_images, how="inner",on="Image Index")
-            
+
+
         # can limit to sample, useful for testing
         # if fold == "train" or fold =="val": sample=500
         if(sample > 0 and sample < len(self.df)):
@@ -63,11 +65,25 @@ class CXRDataset(Dataset):
 
     def __getitem__(self, idx):
 
+        # print('self.df=',self.df)
+        # print('self.PRED_LABEL=',self.PRED_LABEL)
+        # print('self.path_to_images, self.df.index[idx])',self.path_to_images, self.df.index[idx])
+        if self.file_name != "":
+            index = 0;
+            for value in self.df.index:
+                if value == self.file_name:
+                    print("value = ", value ,'index=', index)
+                    break
+                index+=1
+            idx = index
+
         image = Image.open(
             os.path.join(
                 self.path_to_images,
                 self.df.index[idx]))
         image = image.convert('RGB')
+
+
 
         label = np.zeros(len(self.PRED_LABEL), dtype=int)
         for i in range(0, len(self.PRED_LABEL)):

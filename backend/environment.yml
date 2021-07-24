@@ -1,4 +1,4 @@
-name: reproduce-chexnet
+yname: reproduce-chexnet
 channels:
   - conda-forge
 dependencies:

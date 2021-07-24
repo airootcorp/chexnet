@@ -12,7 +12,8 @@ from PIL import Image
 from pylab import *
 import seaborn as sns
 import matplotlib
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
+matplotlib.use('MACOSX')
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import show
 
@@ -70,13 +71,19 @@ def calc_cam(x, label, model):
     class densenet_last_layer(torch.nn.Module):
         def __init__(self, model):
             super(densenet_last_layer, self).__init__()
+            # print('densenet_last_layer->__init__()')
             self.features = torch.nn.Sequential(
                 *list(model.children())[:-1]
             )
+            # print('densenet_last_layer-> __init__()-> self.features = ',self.features)
 
         def forward(self, x):
+            # print('densenet_last_layer->forward()')
+            # print('densenet_last_layer->forward()->self.features(x)',self.features(x))
             x = self.features(x)
+            # print('densenet_last_layer->forward()->x1=',x)
             x = torch.nn.functional.relu(x, inplace=True)
+            # print('densenet_last_layer->forward()->x2=',x)
             return x
 
     # instantiate cam model and get output
@@ -163,7 +170,8 @@ def load_data(
         LABEL,
         PATH_TO_MODEL,
         POSITIVE_FINDINGS_ONLY,
-        STARTER_IMAGES):
+        STARTER_IMAGES,
+        FILE_NAME):
     """
     Loads dataloader and torchvision model
 
@@ -223,13 +231,12 @@ def load_data(
         fold='test',
         transform=data_transform,
         finding=finding,
-        starter_images=STARTER_IMAGES)
-
+        starter_images=STARTER_IMAGES,
+        file_name=FILE_NAME)
     dataloader = torch.utils.data.DataLoader(
         dataset, batch_size=1, shuffle=False, num_workers=0)
 
     print("loaded the data successfully")
-
     return iter(dataloader), model
 
 
@@ -260,12 +267,15 @@ def show_next(dataloader, model, LABEL):
         'Pleural_Thickening',
         'Hernia']
 
+    threshold = [0.108705,0.023068,0.121606,0.194327,0.038759,0.047031,0.012336,0.032115,0.044261,0.023558,0.017978,0.016950,0.029425,0.003566]
+    predy=[]
+
     label_index = next(
         (x for x in range(len(FINDINGS)) if FINDINGS[x] == LABEL))
-
     # get next iter from dataloader
     try:
         inputs, labels, filename = next(dataloader)
+        print('inputs=',inputs,labels,filename)
     except StopIteration:
         print("All examples exhausted - rerun cells above to generate new examples to review")
         return None
@@ -273,10 +283,15 @@ def show_next(dataloader, model, LABEL):
     # get cam map
     original = inputs.clone()
     raw_cam = calc_cam(inputs, LABEL, model)
-
     # create predictions for label of interest and all labels
     pred = model(torch.autograd.Variable(original.cpu())).data.numpy()[0]
     predx = ['%.3f' % elem for elem in list(pred)]
+    for i in range(len(predx)):
+        if float(predx[i])>=threshold[i]:
+            predy.append(True)
+        else:
+            predy.append(False)
+        # print(float(predx[i]),threshold[i],predy[i])
 
     # switch backend in matplotlib
     print("before plotting")
@@ -319,14 +334,113 @@ def show_next(dataloader, model, LABEL):
     #plt.close()
 
 
-    preds_concat=pd.concat([pd.Series(FINDINGS),pd.Series(predx),pd.Series(labels.numpy().astype(bool)[0])],axis=1)
+    preds_concat=pd.concat([pd.Series(FINDINGS),pd.Series(predx),pd.Series(labels.numpy().astype(bool)[0]),pd.Series(threshold),pd.Series(predy)],axis=1)
     preds = pd.DataFrame(data=preds_concat)
-    preds.columns=["Finding","Predicted Probability","Ground Truth"]
+    preds.columns=["Finding","Predicted Probability","Ground Truth","TH","Pred Result"]
     preds.set_index("Finding",inplace=True)
-    preds.sort_values(by='Predicted Probability',inplace=True,ascending=False)
-
+    #preds.sort_values(by='Predicted Probability',inplace=True,ascending=False)
     return preds, imglocation
 
+def multi_show_next(dataloader, model, LABEL):
+    """
+    Plots CXR, activation map of CXR, and shows model probabilities of findings
+
+    Args:
+        dataloader: dataloader of test CXRs
+        model: fine-tuned torchvision densenet-121
+        LABEL: finding we're interested in seeing heatmap for
+    Returns:
+        None (plots output)
+    """
+    FINDINGS = [
+        'Atelectasis',
+        'Cardiomegaly',
+        'Effusion',
+        'Infiltration',
+        'Mass',
+        'Nodule',
+        'Pneumonia',
+        'Pneumothorax',
+        'Consolidation',
+        'Edema',
+        'Emphysema',
+        'Fibrosis',
+        'Pleural_Thickening',
+        'Hernia']
+
+    threshold = [0.108705,0.023068,0.121606,0.194327,0.038759,0.047031,0.012336,0.032115,0.044261,0.023558,0.017978,0.016950,0.029425,0.003566]
+    predy=[]
+
+    label_index = []
+
+    for label in LABEL:
+        label_index.append(next((x for x in range(len(FINDINGS)) if FINDINGS[x] == label)))
+
+    # get next iter from dataloader
+    try:
+        inputs, labels, filename = next(dataloader)
+        # print('inputs=',inputs,labels,filename)
+    except StopIteration:
+        print("All examples exhausted - rerun cells above to generate new examples to review")
+        return None
+
+    # get cam map
+    original = inputs.clone()
+    # create predictions for label of interest and all labels
+    pred = model(torch.autograd.Variable(original.cpu())).data.numpy()[0]
+    predx = ['%.3f' % elem for elem in list(pred)]
+    for i in range(len(predx)):
+        if float(predx[i])>=threshold[i]:
+            predy.append(True)
+        else:
+            predy.append(False)
+        # print(float(predx[i]),threshold[i],predy[i])
+
+    # switch backend in matplotlib
+    print("before plotting")
+    imglocation=[]
+    for i in range(len(LABEL)):
+        raw_cam = calc_cam(inputs, LABEL[i], model)
+
+        fig, (showcxr,heatmap) =plt.subplots(ncols=2,figsize=(14,5))
+
+        hmap = sns.heatmap(raw_cam.squeeze(),
+                cmap = 'viridis',
+                alpha = 0.3, # whole heatmap is translucent
+                annot = True,
+                zorder = 2,square=True,vmin=-5,vmax=5
+                )
+
+        cxr=inputs.numpy().squeeze().transpose(1,2,0)
+        mean = np.array([0.485, 0.456, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
+        cxr = std * cxr + mean
+        cxr = np.clip(cxr, 0, 1)
+
+        hmap.imshow(cxr,
+              aspect = hmap.get_aspect(),
+              extent = hmap.get_xlim() + hmap.get_ylim(),
+              zorder = 1) #put the map under the heatmap
+        hmap.axis('off')
+        hmap.set_title("P("+LABEL[i]+")="+str(predx[label_index[i]]))
+
+        showcxr.imshow(cxr)
+        showcxr.axis('off')
+        showcxr.set_title(filename[0])
+        plt.savefig("./instance/"+str(LABEL[i]+"_P"+str(predx[label_index[i]])+"_file_"+filename[0]))
+        imglocation.append("./instance/"+str(LABEL[i]+"_P"+str(predx[label_index[i]])+"_file_"+filename[0]))
+        print("saved the image successfully")
+        # print(imglocation)
+        #plt.show()
+        #plt.close()
+
+
+    preds_concat=pd.concat([pd.Series(FINDINGS),pd.Series(predx),pd.Series(labels.numpy().astype(bool)[0]),pd.Series(threshold),pd.Series(predy)],axis=1)
+    preds = pd.DataFrame(data=preds_concat)
+    preds.columns=["Finding","Predicted Probability","Ground Truth","TH","Pred Result"]
+    preds.set_index("Finding",inplace=True)
+    #preds.sort_values(by='Predicted Probability',inplace=True,ascending=False)
+    return preds, imglocation
 
 def show_single(dataloader, model, LABEL):
     """

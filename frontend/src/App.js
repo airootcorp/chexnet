@@ -15,10 +15,13 @@ const override = css`
 `;
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.myRef = React.createRef(); // Create a ref object
     this.state = { showPrediction: false, loading: false, pictures: {} };
+    this.cols = [];
+    this.diseases = [];
   }
 
   handleUpload = async () => {
@@ -28,6 +31,7 @@ class App extends Component {
       loading: true
     });
     setTimeout(this.upload, 750);
+
   };
 
   reqListener = () => {
@@ -59,8 +63,10 @@ class App extends Component {
       showPrediction: true,
       loading: false
     });
+    var startTime = new Date().getTime();
 
     let file = this.state.selectedFile;
+    let fileName = file.name;
     console.log("the file is", file);
     let base64img = await this.base64encode();
     console.log("the image is", base64img)
@@ -74,8 +80,9 @@ class App extends Component {
     }
 
     let url = "http://localhost:5000/uploader";
+
     try {
-      let data = { base64img, diagnosis };
+      let data = { base64img, diagnosis, fileName };
       // try to send the image using fetch
       let response = await fetch(url, {
         method: "POST", // or 'PUT'
@@ -89,12 +96,20 @@ class App extends Component {
       let responseJson = await response.json();
       console.log("the response json is", responseJson);
       const imageString = responseJson.encodedimage
+      console.log('imageString = ', imageString)
       const decodedImage = await this.decode_utf8(imageString)
+      this.cols = Object.keys(responseJson["prediction"])
+      this.diseases = Object.keys(responseJson["prediction"][this.cols[0]])
+      console.log(this.cols);
+      console.log(this.diseases);
+
 
       this.setState({
         response: responseJson,
-        image: decodedImage
+        image: decodedImage,
+
       })
+      console.log("걸린 시간 = ", new Date().getTime() - startTime);
     } catch (err) {
       console.error("Error:", err);
     }
@@ -122,6 +137,8 @@ class App extends Component {
   };
 
   render() {
+
+
     return (
       <div className="App">
         <div className="App-header">
@@ -174,9 +191,42 @@ class App extends Component {
 
           {this.state.showPrediction && this.state.response && this.state.response.prediction && (
             <div className="Prediction-container" id="prediction">
-              <h5>Prediction, Pneumonia, {this.state.response.prediction["Predicted Probability"]["Pneumonia"]}</h5>
-              <img className="Prediction-image" src={prediction}/>
-              {/* <img className="Prediction-image" src={this.state.response.encodedimage}/> */}
+              <table
+                border="1"
+                width="100%"
+                height="auto"
+                cellSpacing="5">
+                <caption>분석 결과</caption>
+                <thead>
+                  <tr align="center">
+                    <td></td>
+                    {this.cols.map((col) => (
+                      <th>{col}</th>
+                    ))}
+                    <th>image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.diseases.map(( (disease, index ) => (
+                    <tr>
+                      <td>{disease}</td>
+                      {this.cols.map((col) => (
+                        <td>{String(this.state.response.prediction[col][disease])}</td>
+                      ))}
+                      <td><img className="Prediction-image" src={"data:image/png;base64," + this.state.response.encodedimage[index]} /></td>
+                    </tr>
+                  )))}
+                </tbody>
+
+              </table>
+
+              <h5>걸린 시간, {String(this.state.response.time)}</h5>
+              {/* <h5>Pred Result, {String(this.state.response.prediction["Pred Result"]["Pneumonia"])}</h5> */}
+              {/* <h5>Prediction, Pneumonia, {this.state.response.prediction["Predicted Probability"]["Pneumonia"]}</h5> */}
+              {/* <img className="Prediction-image" src={prediction}/> */}
+              {/* {this.state.response.encodedimage.map(image =>(
+                <img className="Prediction-image" src={"data:image/png;base64," + image} />
+              ))} */}
             </div>
           )}
 

@@ -1,0 +1,468 @@
+hello_world
+ * Serving Flask app "hello" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Apr/2021 22:34:10] "[37mOPTIONS /uploader HTTP/1.1[0m" 200 -
+the request is
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torchvision.models.densenet.DenseNet' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.container.Sequential' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.conv.Conv2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.batchnorm.BatchNorm2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.activation.ReLU' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.pooling.MaxPool2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torchvision.models.densenet._DenseLayer' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.pooling.AvgPool2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.linear.Linear' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.activation.Sigmoid' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+loaded the data successfully
+Cases for review:
+621
+value =  00000075_000.png index= 0
+filename =  starter_images/00000075_000.png
+inputs= tensor([[[[ 0.8104, -0.2171, -1.1589,  ..., -1.9295, -1.9295, -1.9809],
+          [ 0.6734, -0.3027, -1.2274,  ..., -1.9295, -1.9295, -1.9809],
+          [ 0.6049, -0.3369, -1.2445,  ..., -1.9295, -1.9295, -1.9809],
+          ...,
+          [ 1.5982,  0.4508, -0.8335,  ..., -1.9295, -1.9295, -1.9809],
+          [ 1.6838,  0.5022, -0.7308,  ..., -1.8953, -1.8782, -1.9467],
+          [ 1.7523,  0.5878, -0.5596,  ..., -1.7925, -1.7925, -1.8439]],
+
+         [[ 0.9580, -0.0924, -1.0553,  ..., -1.8431, -1.8431, -1.8957],
+          [ 0.8179, -0.1800, -1.1253,  ..., -1.8431, -1.8431, -1.8957],
+          [ 0.7479, -0.2150, -1.1429,  ..., -1.8431, -1.8431, -1.8957],
+          ...,
+          [ 1.7633,  0.5903, -0.7227,  ..., -1.8431, -1.8431, -1.8957],
+          [ 1.8508,  0.6429, -0.6176,  ..., -1.8081, -1.7906, -1.8606],
+          [ 1.9209,  0.7304, -0.4426,  ..., -1.7031, -1.7031, -1.7556]],
+
+         [[ 1.1759,  0.1302, -0.8284,  ..., -1.6127, -1.6127, -1.6650],
+          [ 1.0365,  0.0431, -0.8981,  ..., -1.6127, -1.6127, -1.6650],
+          [ 0.9668,  0.0082, -0.9156,  ..., -1.6127, -1.6127, -1.6650],
+          ...,
+          [ 1.9777,  0.8099, -0.4973,  ..., -1.6127, -1.6127, -1.6650],
+          [ 2.0648,  0.8622, -0.3927,  ..., -1.5779, -1.5604, -1.6302],
+          [ 2.1346,  0.9494, -0.2184,  ..., -1.4733, -1.4733, -1.5256]]]]) tensor([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]) ('00000075_000.png',)
+before plotting
+2021-04-17 22:34:11.727 python[21786:204621] WARNING: NSWindow drag regions should only be invalidated on the Main Thread! This will throw an exception in the future. Called from (
+	0   AppKit                              0x00007fff22ca08bf -[NSWindow(NSWindow_Theme) _postWindowNeedsToResetDragMarginsUnlessPostingDisabled] + 352
+	1   AppKit                              0x00007fff22c8b561 -[NSWindow _initContent:styleMask:backing:defer:contentView:] + 1375
+	2   AppKit                              0x00007fff22c8affb -[NSWindow initWithContentRect:styleMask:backing:defer:] + 42
+	3   _macosx.cpython-36m-darwin.so       0x000000014231150e -[Window initWithContentRect:styleMask:backing:defer:withManager:] + 94
+	4   _macosx.cpython-36m-darwin.so       0x0000000142314be5 FigureManager_init + 341
+	5   libpython3.6m.dylib                 0x000000010abd8d0c wrap_init + 12
+	6   libpython3.6m.dylib                 0x000000010ab74981 _PyObject_FastCallDict + 257
+	7   libpython3.6m.dylib                 0x000000010ab8f25c wrapperdescr_call + 220
+	8   libpython3.6m.dylib                 0x000000010ab74981 _PyObject_FastCallDict + 257
+	9   libpython3.6m.dylib                 0x000000010ac44498 call_function + 184
+	10  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	11  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	12  libpython3.6m.dylib                 0x000000010ac460fb _PyFunction_FastCallDict + 891
+	13  libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	14  libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	15  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	16  libpython3.6m.dylib                 0x000000010abd8c5d slot_tp_init + 125
+	17  libpython3.6m.dylib                 0x000000010abd4f59 type_call + 313
+	18  libpython3.6m.dylib                 0x000000010ab74981 _PyObject_FastCallDict + 257
+	19  libpython3.6m.dylib                 0x000000010ac44498 call_function + 184
+	20  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	21  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	22  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	23  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	24  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	25  libpython3.6m.dylib                 0x000000010ac460fb _PyFunction_FastCallDict + 891
+	26  libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	27  libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	28  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	29  libpython3.6m.dylib                 0x000000010ac41144 _PyEval_EvalFrameDefault + 25556
+	30  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	31  libpython3.6m.dylib                 0x000000010ac3ad1b PyEval_EvalCodeEx + 107
+	32  libpython3.6m.dylib                 0x000000010ab9f8dd function_call + 381
+	33  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	34  libpython3.6m.dylib                 0x000000010ac41144 _PyEval_EvalFrameDefault + 25556
+	35  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	36  libpython3.6m.dylib                 0x000000010ac45d61 fast_function + 657
+	37  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	38  libpython3.6m.dylib                 0x000000010ac40f78 _PyEval_EvalFrameDefault + 25096
+	39  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	40  libpython3.6m.dylib                 0x000000010ac45d61 fast_function + 657
+	41  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	42  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	43  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	44  libpython3.6m.dylib                 0x000000010ac3ad1b PyEval_EvalCodeEx + 107
+	45  libpython3.6m.dylib                 0x000000010ab9f8dd function_call + 381
+	46  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	47  libpython3.6m.dylib                 0x000000010ac41144 _PyEval_EvalFrameDefault + 25556
+	48  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	49  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	50  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	51  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	52  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	53  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	54  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	55  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	56  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	57  libpython3.6m.dylib                 0x000000010ac45f5d _PyFunction_FastCallDict + 477
+	58  libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	59  libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	60  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	61  libpython3.6m.dylib                 0x000000010abd7e05 slot_tp_call + 117
+	62  libpython3.6m.dylib                 0x000000010ab74981 _PyObject_FastCallDict + 257
+	63  libpython3.6m.dylib                 0x000000010ac44498 call_function + 184
+	64  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	65  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	66  libpython3.6m.dylib                 0x000000010ac45d61 fast_function + 657
+	67  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	68  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	69  libpython3.6m.dylib                 0x000000010ac453dc _PyEval_EvalCodeWithName + 3436
+	70  libpython3.6m.dylib                 0x000000010ac45d61 fast_function + 657
+	71  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	72  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	73  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	74  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	75  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	76  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	77  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	78  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	79  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	80  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	81  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	82  libpython3.6m.dylib                 0x000000010ac45f5d _PyFunction_FastCallDict + 477
+	83  libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	84  libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	85  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	86  libpython3.6m.dylib                 0x000000010abd8c5d slot_tp_init + 125
+	87  libpython3.6m.dylib                 0x000000010abd4f59 type_call + 313
+	88  libpython3.6m.dylib                 0x000000010ab74981 _PyObject_FastCallDict + 257
+	89  libpython3.6m.dylib                 0x000000010ac44498 call_function + 184
+	90  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	91  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	92  libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	93  libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	94  libpython3.6m.dylib                 0x000000010ac45f5d _PyFunction_FastCallDict + 477
+	95  libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	96  libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	97  libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	98  libpython3.6m.dylib                 0x000000010ac41144 _PyEval_EvalFrameDefault + 25556
+	99  libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	100 libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	101 libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	102 libpython3.6m.dylib                 0x000000010ac45cb8 fast_function + 488
+	103 libpython3.6m.dylib                 0x000000010ac44571 call_function + 401
+	104 libpython3.6m.dylib                 0x000000010ac40ee8 _PyEval_EvalFrameDefault + 24952
+	105 libpython3.6m.dylib                 0x000000010ac45f5d _PyFunction_FastCallDict + 477
+	106 libpython3.6m.dylib                 0x000000010ab749b3 _PyObject_FastCallDict + 307
+	107 libpython3.6m.dylib                 0x000000010ab74ad5 _PyObject_Call_Prepend + 149
+	108 libpython3.6m.dylib                 0x000000010ab74771 PyObject_Call + 97
+	109 libpython3.6m.dylib                 0x000000010ac8c3c6 t_bootstrap + 70
+	110 libsystem_pthread.dylib             0x00007fff2042d950 _pthread_start + 224
+	111 libsystem_pthread.dylib             0x00007fff2042947b thread_start + 15
+)
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png', './instance/Pneumothorax_P0.003_file_00000075_000.png']
+                   Predicted Probability  Ground Truth        TH  Pred Result
+Finding                                                                      
+Atelectasis                        0.052         False  0.108705        False
+Cardiomegaly                       0.029          True  0.023068         True
+Effusion                           0.018         False  0.121606        False
+Infiltration                       0.140         False  0.194327        False
+Mass                               0.006         False  0.038759        False
+Nodule                             0.013         False  0.047031        False
+Pneumonia                          0.006         False  0.012336        False
+Pneumothorax                       0.003         False  0.032115        False
+Consolidation                      0.030         False  0.044261        False
+Edema                              0.006         False  0.023558        False
+Emphysema                          0.006         False  0.017978        False
+Fibrosis                           0.002         False  0.016950        False
+Pleural_Thickening                 0.003         False  0.029425        False
+Hernia                             0.001         False  0.003566        False
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png', './instance/Pneumothorax_P0.003_file_00000075_000.png']
+imglocation =  ./instance/Atelectasis_P0.052_file_00000075_000.png
+imglocation =  ./instance/Cardiomegaly_P0.029_file_00000075_000.png
+imglocation =  ./instance/Consolidation_P0.030_file_00000075_000.png
+imglocation =  ./instance/Edema_P0.006_file_00000075_000.png
+imglocation =  ./instance/Effusion_P0.018_file_00000075_000.png
+imglocation =  ./instance/Emphysema_P0.006_file_00000075_000.png
+imglocation =  ./instance/Fibrosis_P0.002_file_00000075_000.png
+imglocation =  ./instance/Hernia_P0.001_file_00000075_000.png
+imglocation =  ./instance/Infiltration_P0.140_file_00000075_000.png
+imglocation =  ./instance/Mass_P0.006_file_00000075_000.png
+imglocation =  ./instance/Nodule_P0.013_file_00000075_000.png
+imglocation =  ./instance/Pleural_Thickening_P0.003_file_00000075_000.png
+imglocation =  ./instance/Pneumonia_P0.006_file_00000075_000.png
+imglocation =  ./instance/Pneumothorax_P0.003_file_00000075_000.png
+분석 시간 : 10.167288064956665
+127.0.0.1 - - [17/Apr/2021 22:34:20] "[37mPOST /uploader HTTP/1.1[0m" 200 -
+Assertion failed: (NSViewIsCurrentlyBuildingLayerTreeForDisplay() != currentlyBuildingLayerTree), function NSViewSetCurrentlyBuildingLayerTreeForDisplay, file /AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/AppKit/AppKit-2022.20.119/AppKit.subproj/NSView.m, line 13401.
+hello_world
+ * Serving Flask app "hello" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Apr/2021 22:38:17] "[37mOPTIONS /uploader HTTP/1.1[0m" 200 -
+the request is
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torchvision.models.densenet.DenseNet' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.container.Sequential' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.conv.Conv2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.batchnorm.BatchNorm2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.activation.ReLU' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.pooling.MaxPool2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torchvision.models.densenet._DenseLayer' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.pooling.AvgPool2d' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.linear.Linear' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+/Users/kimgun/opt/anaconda3/envs/reproduce-chexnet/lib/python3.6/site-packages/torch/serialization.py:435: SourceChangeWarning: source code of class 'torch.nn.modules.activation.Sigmoid' has changed. you can retrieve the original source code by accessing the object's source attribute or set `torch.nn.Module.dump_patches = True` and use the patch tool to revert the changes.
+  warnings.warn(msg, SourceChangeWarning)
+loaded the data successfully
+Cases for review:
+621
+value =  00000075_000.png index= 0
+filename =  starter_images/00000075_000.png
+inputs= tensor([[[[ 0.8104, -0.2171, -1.1589,  ..., -1.9295, -1.9295, -1.9809],
+          [ 0.6734, -0.3027, -1.2274,  ..., -1.9295, -1.9295, -1.9809],
+          [ 0.6049, -0.3369, -1.2445,  ..., -1.9295, -1.9295, -1.9809],
+          ...,
+          [ 1.5982,  0.4508, -0.8335,  ..., -1.9295, -1.9295, -1.9809],
+          [ 1.6838,  0.5022, -0.7308,  ..., -1.8953, -1.8782, -1.9467],
+          [ 1.7523,  0.5878, -0.5596,  ..., -1.7925, -1.7925, -1.8439]],
+
+         [[ 0.9580, -0.0924, -1.0553,  ..., -1.8431, -1.8431, -1.8957],
+          [ 0.8179, -0.1800, -1.1253,  ..., -1.8431, -1.8431, -1.8957],
+          [ 0.7479, -0.2150, -1.1429,  ..., -1.8431, -1.8431, -1.8957],
+          ...,
+          [ 1.7633,  0.5903, -0.7227,  ..., -1.8431, -1.8431, -1.8957],
+          [ 1.8508,  0.6429, -0.6176,  ..., -1.8081, -1.7906, -1.8606],
+          [ 1.9209,  0.7304, -0.4426,  ..., -1.7031, -1.7031, -1.7556]],
+
+         [[ 1.1759,  0.1302, -0.8284,  ..., -1.6127, -1.6127, -1.6650],
+          [ 1.0365,  0.0431, -0.8981,  ..., -1.6127, -1.6127, -1.6650],
+          [ 0.9668,  0.0082, -0.9156,  ..., -1.6127, -1.6127, -1.6650],
+          ...,
+          [ 1.9777,  0.8099, -0.4973,  ..., -1.6127, -1.6127, -1.6650],
+          [ 2.0648,  0.8622, -0.3927,  ..., -1.5779, -1.5604, -1.6302],
+          [ 2.1346,  0.9494, -0.2184,  ..., -1.4733, -1.4733, -1.5256]]]]) tensor([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]) ('00000075_000.png',)
+before plotting
+2021-04-17 22:38:19.095 python[22290:209122] WARNING: NSWindow drag regions should only be invalidated on the Main Thread! This will throw an exception in the future. Called from (
+	0   AppKit                              0x00007fff22ca08bf -[NSWindow(NSWindow_Theme) _postWindowNeedsToResetDragMarginsUnlessPostingDisabled] + 352
+	1   AppKit                              0x00007fff22c8b561 -[NSWindow _initContent:styleMask:backing:defer:contentView:] + 1375
+	2   AppKit                              0x00007fff22c8affb -[NSWindow initWithContentRect:styleMask:backing:defer:] + 42
+	3   _macosx.cpython-36m-darwin.so       0x0000000141d8250e -[Window initWithContentRect:styleMask:backing:defer:withManager:] + 94
+	4   _macosx.cpython-36m-darwin.so       0x0000000141d85be5 FigureManager_init + 341
+	5   libpython3.6m.dylib                 0x000000010a649d0c wrap_init + 12
+	6   libpython3.6m.dylib                 0x000000010a5e5981 _PyObject_FastCallDict + 257
+	7   libpython3.6m.dylib                 0x000000010a60025c wrapperdescr_call + 220
+	8   libpython3.6m.dylib                 0x000000010a5e5981 _PyObject_FastCallDict + 257
+	9   libpython3.6m.dylib                 0x000000010a6b5498 call_function + 184
+	10  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	11  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	12  libpython3.6m.dylib                 0x000000010a6b70fb _PyFunction_FastCallDict + 891
+	13  libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	14  libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	15  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	16  libpython3.6m.dylib                 0x000000010a649c5d slot_tp_init + 125
+	17  libpython3.6m.dylib                 0x000000010a645f59 type_call + 313
+	18  libpython3.6m.dylib                 0x000000010a5e5981 _PyObject_FastCallDict + 257
+	19  libpython3.6m.dylib                 0x000000010a6b5498 call_function + 184
+	20  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	21  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	22  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	23  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	24  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	25  libpython3.6m.dylib                 0x000000010a6b70fb _PyFunction_FastCallDict + 891
+	26  libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	27  libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	28  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	29  libpython3.6m.dylib                 0x000000010a6b2144 _PyEval_EvalFrameDefault + 25556
+	30  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	31  libpython3.6m.dylib                 0x000000010a6abd1b PyEval_EvalCodeEx + 107
+	32  libpython3.6m.dylib                 0x000000010a6108dd function_call + 381
+	33  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	34  libpython3.6m.dylib                 0x000000010a6b2144 _PyEval_EvalFrameDefault + 25556
+	35  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	36  libpython3.6m.dylib                 0x000000010a6b6d61 fast_function + 657
+	37  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	38  libpython3.6m.dylib                 0x000000010a6b1f78 _PyEval_EvalFrameDefault + 25096
+	39  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	40  libpython3.6m.dylib                 0x000000010a6b6d61 fast_function + 657
+	41  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	42  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	43  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	44  libpython3.6m.dylib                 0x000000010a6abd1b PyEval_EvalCodeEx + 107
+	45  libpython3.6m.dylib                 0x000000010a6108dd function_call + 381
+	46  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	47  libpython3.6m.dylib                 0x000000010a6b2144 _PyEval_EvalFrameDefault + 25556
+	48  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	49  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	50  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	51  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	52  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	53  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	54  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	55  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	56  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	57  libpython3.6m.dylib                 0x000000010a6b6f5d _PyFunction_FastCallDict + 477
+	58  libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	59  libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	60  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	61  libpython3.6m.dylib                 0x000000010a648e05 slot_tp_call + 117
+	62  libpython3.6m.dylib                 0x000000010a5e5981 _PyObject_FastCallDict + 257
+	63  libpython3.6m.dylib                 0x000000010a6b5498 call_function + 184
+	64  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	65  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	66  libpython3.6m.dylib                 0x000000010a6b6d61 fast_function + 657
+	67  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	68  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	69  libpython3.6m.dylib                 0x000000010a6b63dc _PyEval_EvalCodeWithName + 3436
+	70  libpython3.6m.dylib                 0x000000010a6b6d61 fast_function + 657
+	71  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	72  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	73  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	74  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	75  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	76  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	77  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	78  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	79  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	80  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	81  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	82  libpython3.6m.dylib                 0x000000010a6b6f5d _PyFunction_FastCallDict + 477
+	83  libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	84  libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	85  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	86  libpython3.6m.dylib                 0x000000010a649c5d slot_tp_init + 125
+	87  libpython3.6m.dylib                 0x000000010a645f59 type_call + 313
+	88  libpython3.6m.dylib                 0x000000010a5e5981 _PyObject_FastCallDict + 257
+	89  libpython3.6m.dylib                 0x000000010a6b5498 call_function + 184
+	90  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	91  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	92  libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	93  libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	94  libpython3.6m.dylib                 0x000000010a6b6f5d _PyFunction_FastCallDict + 477
+	95  libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	96  libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	97  libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	98  libpython3.6m.dylib                 0x000000010a6b2144 _PyEval_EvalFrameDefault + 25556
+	99  libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	100 libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	101 libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	102 libpython3.6m.dylib                 0x000000010a6b6cb8 fast_function + 488
+	103 libpython3.6m.dylib                 0x000000010a6b5571 call_function + 401
+	104 libpython3.6m.dylib                 0x000000010a6b1ee8 _PyEval_EvalFrameDefault + 24952
+	105 libpython3.6m.dylib                 0x000000010a6b6f5d _PyFunction_FastCallDict + 477
+	106 libpython3.6m.dylib                 0x000000010a5e59b3 _PyObject_FastCallDict + 307
+	107 libpython3.6m.dylib                 0x000000010a5e5ad5 _PyObject_Call_Prepend + 149
+	108 libpython3.6m.dylib                 0x000000010a5e5771 PyObject_Call + 97
+	109 libpython3.6m.dylib                 0x000000010a6fd3c6 t_bootstrap + 70
+	110 libsystem_pthread.dylib             0x00007fff2042d950 _pthread_start + 224
+	111 libsystem_pthread.dylib             0x00007fff2042947b thread_start + 15
+)
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png']
+saved the image successfully
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png', './instance/Pneumothorax_P0.003_file_00000075_000.png']
+                   Predicted Probability  Ground Truth        TH  Pred Result
+Finding                                                                      
+Atelectasis                        0.052         False  0.108705        False
+Cardiomegaly                       0.029          True  0.023068         True
+Effusion                           0.018         False  0.121606        False
+Infiltration                       0.140         False  0.194327        False
+Mass                               0.006         False  0.038759        False
+Nodule                             0.013         False  0.047031        False
+Pneumonia                          0.006         False  0.012336        False
+Pneumothorax                       0.003         False  0.032115        False
+Consolidation                      0.030         False  0.044261        False
+Edema                              0.006         False  0.023558        False
+Emphysema                          0.006         False  0.017978        False
+Fibrosis                           0.002         False  0.016950        False
+Pleural_Thickening                 0.003         False  0.029425        False
+Hernia                             0.001         False  0.003566        False
+['./instance/Atelectasis_P0.052_file_00000075_000.png', './instance/Cardiomegaly_P0.029_file_00000075_000.png', './instance/Consolidation_P0.030_file_00000075_000.png', './instance/Edema_P0.006_file_00000075_000.png', './instance/Effusion_P0.018_file_00000075_000.png', './instance/Emphysema_P0.006_file_00000075_000.png', './instance/Fibrosis_P0.002_file_00000075_000.png', './instance/Hernia_P0.001_file_00000075_000.png', './instance/Infiltration_P0.140_file_00000075_000.png', './instance/Mass_P0.006_file_00000075_000.png', './instance/Nodule_P0.013_file_00000075_000.png', './instance/Pleural_Thickening_P0.003_file_00000075_000.png', './instance/Pneumonia_P0.006_file_00000075_000.png', './instance/Pneumothorax_P0.003_file_00000075_000.png']
+imglocation =  ./instance/Atelectasis_P0.052_file_00000075_000.png
+imglocation =  ./instance/Cardiomegaly_P0.029_file_00000075_000.png
+imglocation =  ./instance/Consolidation_P0.030_file_00000075_000.png
+imglocation =  ./instance/Edema_P0.006_file_00000075_000.png
+imglocation =  ./instance/Effusion_P0.018_file_00000075_000.png
+imglocation =  ./instance/Emphysema_P0.006_file_00000075_000.png
+imglocation =  ./instance/Fibrosis_P0.002_file_00000075_000.png
+imglocation =  ./instance/Hernia_P0.001_file_00000075_000.png
+imglocation =  ./instance/Infiltration_P0.140_file_00000075_000.png
+imglocation =  ./instance/Mass_P0.006_file_00000075_000.png
+imglocation =  ./instance/Nodule_P0.013_file_00000075_000.png
+imglocation =  ./instance/Pleural_Thickening_P0.003_file_00000075_000.png
+imglocation =  ./instance/Pneumonia_P0.006_file_00000075_000.png
+imglocation =  ./instance/Pneumothorax_P0.003_file_00000075_000.png
+분석 시간 : 10.094155073165894
+127.0.0.1 - - [17/Apr/2021 22:38:27] "[37mPOST /uploader HTTP/1.1[0m" 200 -
+Assertion failed: (NSViewIsCurrentlyBuildingLayerTreeForDisplay() != currentlyBuildingLayerTree), function NSViewSetCurrentlyBuildingLayerTreeForDisplay, file /AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/AppKit/AppKit-2022.20.119/AppKit.subproj/NSView.m, line 13401.
